@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -48,13 +49,15 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder
         holder.card_movie.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent();
+                //Toast.makeText(v.getContext(), search.getTitle(), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(activity, SearchDetailsActivity.class);
                 intent.putExtra("id", String.valueOf(search.getId()));
                 intent.putExtra("title", search.getTitle());
                 intent.putExtra("overview", search.getOverview());
                 intent.putExtra("media_type", search.getMedia_type());
                 intent.putExtra("poster_path", search.getPoster_path());
                 intent.putExtra("release_date", search.getRelease_date());
+                activity.startActivity(intent);
             }
         });
     }

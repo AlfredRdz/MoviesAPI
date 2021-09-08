@@ -44,13 +44,6 @@ public class SerieAdapter extends RecyclerView.Adapter<SerieAdapter.MyViewHolder
                 .into(holder.imageView);
         holder.textView.setText(serie.getName());
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(v.getContext(), "Seleccion: " + serie.getName(), Toast.LENGTH_SHORT).show();
-            }
-        });
-
         holder.card_movie.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

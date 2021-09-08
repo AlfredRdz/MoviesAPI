@@ -12,9 +12,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MoviesAPI">
         <activity
+            android:name=".SearchDetailsActivity"
+            android:exported="true"
+            android:theme="@style/Theme.MoviesAPI.NoActionBar" />
+        <activity
             android:name=".BusquedaActivity"
             android:exported="true"
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".SerieDetailsActivity"
             android:exported="true"

@@ -5,9 +5,11 @@
       <map>
         <entry key="..\:/Users/Alfred/AndroidStudioProjects/MoviesAPI/app/src/main/res/drawable/ic_baseline_search.xml" value="0.22135416666666666" />
         <entry key="..\:/Users/Alfred/AndroidStudioProjects/MoviesAPI/app/src/main/res/drawable/ic_search_black_24dp.xml" value="0.22135416666666666" />
+        <entry key="..\:/Users/Alfred/AndroidStudioProjects/MoviesAPI/app/src/main/res/layout/activity_busqueda.xml" value="0.3500905797101449" />
         <entry key="..\:/Users/Alfred/AndroidStudioProjects/MoviesAPI/app/src/main/res/layout/activity_main.xml" value="0.360054347826087" />
         <entry key="..\:/Users/Alfred/AndroidStudioProjects/MoviesAPI/app/src/main/res/layout/activity_main2.xml" value="0.20520833333333333" />
         <entry key="..\:/Users/Alfred/AndroidStudioProjects/MoviesAPI/app/src/main/res/layout/activity_movie_details.xml" value="0.20520833333333333" />
+        <entry key="..\:/Users/Alfred/AndroidStudioProjects/MoviesAPI/app/src/main/res/layout/activity_search.xml" value="0.3500905797101449" />
         <entry key="..\:/Users/Alfred/AndroidStudioProjects/MoviesAPI/app/src/main/res/layout/activity_serie_details.xml" value="0.3500905797101449" />
         <entry key="..\:/Users/Alfred/AndroidStudioProjects/MoviesAPI/app/src/main/res/layout/cardmovie.xml" value="0.360054347826087" />
         <entry key="..\:/Users/Alfred/AndroidStudioProjects/MoviesAPI/app/src/main/res/layout/content_scrolling.xml" value="0.20520833333333333" />
