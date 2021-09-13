@@ -1,6 +1,6 @@
 package com.alfred.moviesapi.Model;
 
-public class SerieDAO {
+public class SerieDetail {
     private Integer id;
     private String name;
     private String overview;

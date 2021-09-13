@@ -44,17 +44,10 @@ public class SerieAdapter extends RecyclerView.Adapter<SerieAdapter.MyViewHolder
                 .into(holder.imageView);
         holder.textView.setText(serie.getName());
 
-        holder.card_movie.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(activity, SerieDetailsActivity.class);
-                intent.putExtra("id", String.valueOf(serie.getId()));
-//                intent.putExtra("name", serie.getName());
-//                intent.putExtra("overview", serie.getOverview());
-//                intent.putExtra("poster_path", serie.getPoster_path());
-//                intent.putExtra("first_air_date", serie.getFirst_air_date());
-                activity.startActivity(intent);
-            }
+        holder.card_movie.setOnClickListener(v -> {
+            Intent intent = new Intent(activity, SerieDetailsActivity.class);
+            intent.putExtra("id", String.valueOf(serie.getId()));
+            activity.startActivity(intent);
         });
     }
 

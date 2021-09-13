@@ -2,27 +2,20 @@ package com.alfred.moviesapi;
 
 import android.os.Bundle;
 
-import com.alfred.moviesapi.Model.Serie;
-import com.alfred.moviesapi.Model.SerieDAO;
-import com.alfred.moviesapi.Model.SerieDAORespuesta;
-import com.alfred.moviesapi.Model.SerieRespuesta;
+import com.alfred.moviesapi.Model.SerieDetail;
 import com.alfred.moviesapi.interfaces.SeriesApi;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.util.Log;
-import android.view.View;
 import android.widget.Toast;
 
 import com.alfred.moviesapi.databinding.ActivitySerieDetailsBinding;
 
-import java.util.List;
 import java.util.Objects;
 
 import retrofit2.Call;
@@ -36,8 +29,10 @@ public class SerieDetailsActivity extends AppCompatActivity {
     private ActivitySerieDetailsBinding binding;
 
     private static final String TAG = "Serie Detail: ";
-    String id, name, overview, poster_path, first_air_date;
+    String id, name;
     Retrofit retrofit;
+    CollapsingToolbarLayout toolBarLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,7 +43,7 @@ public class SerieDetailsActivity extends AppCompatActivity {
         Toolbar toolbar = binding.toolbar;
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
-        CollapsingToolbarLayout toolBarLayout = binding.toolbarLayout;
+        toolBarLayout = binding.toolbarLayout;
 
          retrofit = new Retrofit.Builder()
                 .baseUrl("https://api.themoviedb.org/3/")
@@ -58,7 +53,7 @@ public class SerieDetailsActivity extends AppCompatActivity {
         getDataIntent();
         getData();
 
-        toolBarLayout.setTitle(name);
+
 
     }
 
@@ -66,31 +61,19 @@ public class SerieDetailsActivity extends AppCompatActivity {
         if (getIntent().hasExtra("id")) {
             id = getIntent().getStringExtra("id");
             Toast.makeText(SerieDetailsActivity.this, "id: " + id, Toast.LENGTH_SHORT).show();
-//            name = getIntent().getStringExtra("name");
-//            overview = getIntent().getStringExtra("overview");
-//            poster_path = getIntent().getStringExtra("poster_path");
-//            first_air_date = getIntent().getStringExtra("first_air_date");
-//
-//            binding.txtFirtsAir.setText(first_air_date);
-//            binding.txtOver.setText(overview);
-//
-//            Glide.with(getApplicationContext())
-//                    .load("https://www.themoviedb.org/t/p/w600_and_h900_bestv2/" + poster_path)
-//                    .diskCacheStrategy(DiskCacheStrategy.ALL)
-//                    .into(binding.imageSerie);
         }
     }
 
     public void getData() {
         SeriesApi seriesApi = retrofit.create(SeriesApi.class);
 
-        Call<SerieDAO> respuestaCall = seriesApi.getSerieById(Integer.parseInt(id));
+        Call<SerieDetail> respuestaCall = seriesApi.getSerieById(Integer.parseInt(id));
 
-        respuestaCall.enqueue(new Callback<SerieDAO>() {
+        respuestaCall.enqueue(new Callback<SerieDetail>() {
             @Override
-            public void onResponse(Call<SerieDAO> call, Response<SerieDAO> response) {
+            public void onResponse(Call<SerieDetail> call, Response<SerieDetail> response) {
                 if (response.isSuccessful()) {
-                    SerieDAO serieRespuesta = response.body();
+                    SerieDetail serieRespuesta = response.body();
                     int id = serieRespuesta.getId();
                     name = serieRespuesta.getName();
                     String overview = serieRespuesta.getOverview();
@@ -99,7 +82,7 @@ public class SerieDetailsActivity extends AppCompatActivity {
                     Integer number_of_episodes = serieRespuesta.getNumber_of_episodes();
                     Integer number_of_seasons = serieRespuesta.getNumber_of_seasons();
 
-
+                    toolBarLayout.setTitle(name);
 
                     Log.e(TAG, "Serie: " + id + name + overview + poster_path + first_air_date + number_of_episodes + number_of_seasons);
                     binding.txtRealeseSerie.setText(first_air_date);
@@ -117,7 +100,7 @@ public class SerieDetailsActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<SerieDAO> call, Throwable t) {
+            public void onFailure(Call<SerieDetail> call, Throwable t) {
                 Log.e(TAG, "Serie: " + t.getMessage());
             }
         });
