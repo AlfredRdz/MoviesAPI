@@ -20,7 +20,7 @@ public class SearchDetailsActivity extends AppCompatActivity {
 
     private ActivitySearchDetailsBinding binding;
 
-    String id, title, overview, media_type, poster_path, release_date;
+    String id, title, name, overview, media_type, poster_path, release_date;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

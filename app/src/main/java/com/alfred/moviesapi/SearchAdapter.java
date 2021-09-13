@@ -23,6 +23,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder
 
     List<Search> searchList;
     Activity activity;
+    String title, release;
 
     public SearchAdapter(List<Search> searchList, Activity activity) {
         this.searchList = searchList;
@@ -44,7 +45,20 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder
                 .load("https://www.themoviedb.org/t/p/w600_and_h900_bestv2/" + search.getPoster_path())
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(holder.imageView);
-        holder.textView.setText(search.getTitle());
+
+        if (search.getTitle() != null) {
+            holder.textView.setText(search.getTitle());
+            title = search.getTitle();
+        } else {
+            holder.textView.setText(search.getName());
+            title = search.getName();
+        }
+
+        if (search.getRelease_date() != null) {
+            release = search.getRelease_date();
+        } else {
+            release = search.getFirst_air_date();
+        }
 
         holder.card_movie.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,11 +66,11 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder
                 //Toast.makeText(v.getContext(), search.getTitle(), Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(activity, SearchDetailsActivity.class);
                 intent.putExtra("id", String.valueOf(search.getId()));
-                intent.putExtra("title", search.getTitle());
+                intent.putExtra("title", title);
                 intent.putExtra("overview", search.getOverview());
                 intent.putExtra("media_type", search.getMedia_type());
                 intent.putExtra("poster_path", search.getPoster_path());
-                intent.putExtra("release_date", search.getRelease_date());
+                intent.putExtra("release_date", release);
                 activity.startActivity(intent);
             }
         });

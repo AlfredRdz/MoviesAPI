@@ -3,10 +3,12 @@ package com.alfred.moviesapi.Model;
 public class Search {
     private Integer id;
     private String title;
+    private String name;
     private String overview;
     private String media_type;
     private String poster_path;
     private String release_date;
+    private String first_air_date;
 
     public Integer getId() {
         return id;
@@ -22,6 +24,14 @@ public class Search {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getOverview() {
@@ -54,5 +64,13 @@ public class Search {
 
     public void setRelease_date(String release_date) {
         this.release_date = release_date;
+    }
+
+    public String getFirst_air_date() {
+        return first_air_date;
+    }
+
+    public void setFirst_air_date(String first_air_date) {
+        this.first_air_date = first_air_date;
     }
 }
